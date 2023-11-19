@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
+import { referral } from './Referral';
+import { defaultRedirector } from './defaultRedirector';
 
+const router = createBrowserRouter([
+  {
+    path: '/ref',
+    loader: referral,
+  },
+  {
+    path: '/',
+    loader: defaultRedirector,
+  }
+])
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(<RouterProvider router={router} />);
