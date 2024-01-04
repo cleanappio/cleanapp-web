@@ -5,9 +5,9 @@ import { isAndroid, isIOS } from 'react-device-detect';
 export const cleanAppUrl = 'https://www.cleanapp.io';
 
 export const referral = async () => {
-  const refBackendAddress = 'http://localhost:8081/writereferral/';
-  const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.cleanapp';
-  const appStoreUrl = 'https://apps.apple.com/us/app/cleanapp/id6466403301';
+  const refBackendAddress = process.env.REACT_APP_REF_API_ENDPOINT;
+  const playStoreUrl = process.env.REACT_APP_PLAYSTORE_URL;
+  const appStoreUrl = process.env.REACT_APP_APPSTORE_URL;
 
   const searchParams = new URLSearchParams(window.location.search);
 
