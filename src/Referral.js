@@ -29,18 +29,18 @@ export const referral = async () => {
     }
   };
 
-  const keyData = await getKeyData();
-  await fetch(refBackendAddress, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify({
-      refkey: keyData.ip + ':' + keyData.width + ':' + keyData.height,
-      refvalue: searchParams.get('refid')
-    }),
-    headers: {
-      'Content-type': 'application/json',
-    }
-  });
+  // const keyData = await getKeyData();
+  // await fetch(refBackendAddress, {
+  //   method: 'POST',
+  //   mode: 'no-cors',
+  //   body: JSON.stringify({
+  //     refkey: keyData.ip + ':' + keyData.width + ':' + keyData.height,
+  //     refvalue: searchParams.get('refid')
+  //   }),
+  //   headers: {
+  //     'Content-type': 'application/json',
+  //   }
+  // });
 
   console.log('Stored values successfully, redirecting to', getStoreUrl());
   return redirect(getStoreUrl());
