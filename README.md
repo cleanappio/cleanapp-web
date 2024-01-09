@@ -13,6 +13,11 @@ E.g.
 ```
 htp://localhost:3000/ref?refId=12345
 ```
+Once deployed domain and port depend on the platform and docker-compose configuration (see backend reporistory
+instructions). Expected URL:
+```
+http://app.cleanapp.io:3000/ref/refId=12345
+```
 
 # Docker & DockerHub
 
@@ -24,7 +29,7 @@ e.g.
 ```
 ibnazer/cleanappapp:1.6
 ```
-* 1.6 is 2.0 (alpha)
+*(1.6 is 2.0.alpha)*
 
 When building an image update the script to build it ./dockerapp/build_server_image.sh: at the top there are two environment
 variables: DOCKER_LABEL and DOCKER_PREFIX.
@@ -33,10 +38,5 @@ variables: DOCKER_LABEL and DOCKER_PREFIX.
 
 > 💡 **IMPORTANT:** When you push your new image to DockerHub, you must own the prefix.
 
-Once deployed depends on the platform and docker-compose configuration (see backend reporistory).
-Expected URL:
-```
-http://app.cleanapp.io:80/ref/refId=12345
-```
 
 *Last updated: Jan 4, 2023*
