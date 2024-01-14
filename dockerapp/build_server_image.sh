@@ -29,8 +29,8 @@ gcloud builds submit \
   --region=${CLOUD_REGION} \
   --tag ${DOCKER_TAG}:${BUILD_VERSION}
 
-echo "Tagging Docker image as latest..."
-gcloud artifacts docker tags add ${DOCKER_TAG}:${BUILD_VERSION} ${DOCKER_TAG}:latest
+echo "Tagging Docker image as live..."
+gcloud artifacts docker tags add ${DOCKER_TAG}:${BUILD_VERSION} ${DOCKER_TAG}:live
 
 rm -f -d -R src
 rm -f -d -R public
