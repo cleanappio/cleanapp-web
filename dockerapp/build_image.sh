@@ -17,6 +17,31 @@ cp -R ../src ./
 cp -R ../public ./
 cp ../package.json ./
 
+# Choose the environment
+PS3="Please choose the environment: "
+options=("local" "dev" "prod" "quit")
+select OPT in "${options[@]}"
+do
+  case ${OPT} in
+    "local")
+        echo "Using local environment"
+        break
+        ;;
+    "dev")
+        echo "Using dev environment"
+        break
+        ;;
+    "prod")
+        echo "Using prod environment"
+        break
+        ;;
+    "quit")
+        exit
+        ;;
+    *) echo "invalid option $REPLY";;
+  esac
+done
+
 . .version
 
 CLOUD_REGION="us-central1"
@@ -29,8 +54,8 @@ gcloud builds submit \
   --region=${CLOUD_REGION} \
   --tag ${DOCKER_TAG}:${BUILD_VERSION}
 
-echo "Tagging Docker image as live..."
-gcloud artifacts docker tags add ${DOCKER_TAG}:${BUILD_VERSION} ${DOCKER_TAG}:live
+echo "Tagging Docker image as current ${OPT}..."
+gcloud artifacts docker tags add ${DOCKER_TAG}:${BUILD_VERSION} ${DOCKER_TAG}:${OPT}
 
 rm -f -d -R src
 rm -f -d -R public
