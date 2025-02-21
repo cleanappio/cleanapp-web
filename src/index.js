@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { About } from './About'; 
 import { referral } from './Referral';
 import { defaultRedirector } from './defaultRedirector';
+import { OptOutEmail } from './OptOutEmail';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: '/ref',
     loader: referral,
+  },
+  {
+    path: '/optoutemail',
+    Component: OptOutEmail,
   },
   {
     path: '/',
